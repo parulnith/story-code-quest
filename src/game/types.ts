@@ -31,7 +31,11 @@ export type SpriteName =
   | "wolf"
   | "crow"
   | "monkey"
+  | "rabbit"
+  | "lion"
+  | "crocodile"
   | "grandmaHouse"
+  | "well"
   | "pot"
   | "stone"
   | "mangoTree"
@@ -52,7 +56,7 @@ export type BoardObject = {
 
 export type Obstacle = {
   id: string;
-  kind: "wolf" | "tree";
+  kind: "wolf" | "tree" | "lion" | "crocodile";
   position: Position;
   sprite: SpriteName;
 };
@@ -75,7 +79,7 @@ export type LevelGoal =
       label: string;
     };
 
-export type LevelTheme = "red" | "crow" | "monkey";
+export type LevelTheme = "red" | "crow" | "monkey" | "panchatantra";
 
 export type RuntimeState = {
   character: {
