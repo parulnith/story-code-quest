@@ -205,9 +205,9 @@ export const levels = [
   }),
   new Level({
     id: 4,
-    title: "Panchatantra: The Clever Rabbit",
+    title: "The Clever Rabbit",
     story:
-      "The clever rabbit must reach the old well and stay away from the lion's trap paths.",
+      "A proud lion scares every animal in the forest. A tiny rabbit has a clever idea: lead the lion to an old well, where the lion will think his own reflection is another lion. Guide the rabbit safely to the well and avoid the lion's trap paths.",
     concept: "Debugging a route with turns and safe choices",
     grid: new Grid(
       6,
@@ -264,9 +264,9 @@ export const levels = [
   }),
   new Level({
     id: 5,
-    title: "Panchatantra: Monkey and Crocodile",
+    title: "Monkey and Crocodile",
     story:
-      "The monkey needs to get back to the mango tree. Crocodiles wait on tempting shortcuts.",
+      "A monkey lives in a mango tree by the river. A crocodile pretends to be friendly, but the monkey must think fast and return safely to the tree. Plan a route around the crocodiles and do not trust the tempting shortcuts.",
     concept: "Planning a safe path around hazards",
     grid: new Grid(
       7,
