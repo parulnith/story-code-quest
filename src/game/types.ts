@@ -9,7 +9,8 @@ export type BasicCommand =
   | "move_forward"
   | "turn_left"
   | "turn_right"
-  | "pick_object";
+  | "pick_object"
+  | "drop_object";
 
 export type CommandType = BasicCommand | "repeat_loop";
 

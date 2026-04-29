@@ -213,6 +213,9 @@ export function LevelManager() {
         </div>
 
         <CommandEditor
+          defaultRepeatBody={
+            level.goal.type === "dropStones" ? "drop_object" : "move_forward"
+          }
           isRunning={isRunning}
           hasHint={hintStep < level.starterProgram.length}
           onHint={revealHint}

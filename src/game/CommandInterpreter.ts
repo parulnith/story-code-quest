@@ -94,7 +94,10 @@ export class CommandInterpreter {
       });
     }
 
-    const pickupResult = this.pickOrUse(nextState);
+    const pickupResult =
+      command === "drop_object"
+        ? this.dropObject(nextState)
+        : this.pickObject(nextState);
     return this.withGoalCheck({
       state: pickupResult.state,
       event: pickupResult.event,
@@ -105,7 +108,7 @@ export class CommandInterpreter {
     });
   }
 
-  private pickOrUse(state: RuntimeState) {
+  private pickObject(state: RuntimeState) {
     const position = state.character.position;
     const object = state.objects.find(
       (item) =>
@@ -128,6 +131,19 @@ export class CommandInterpreter {
       return { state, event: "pickup" as const, message: state.message };
     }
 
+    state.message = "Nothing to pick up here.";
+    return { state, event: "miss" as const, message: state.message };
+  }
+
+  private dropObject(state: RuntimeState) {
+    const position = state.character.position;
+    const object = state.objects.find(
+      (item) =>
+        !item.collected &&
+        item.position.x === position.x &&
+        item.position.y === position.y,
+    );
+
     if (
       object?.kind === "pot" &&
       state.inventory.stones > 0 &&
@@ -139,7 +155,12 @@ export class CommandInterpreter {
       return { state, event: "drop" as const, message: state.message };
     }
 
-    state.message = "Nothing to pick up here.";
+    if (object?.kind === "pot") {
+      state.message = "No stones to drop yet.";
+      return { state, event: "miss" as const, message: state.message };
+    }
+
+    state.message = "Nothing to drop here.";
     return { state, event: "miss" as const, message: state.message };
   }
 

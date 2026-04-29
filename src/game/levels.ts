@@ -51,7 +51,7 @@ export const levels = [
       "move_forward",
       "pick_object",
       "move_forward",
-      "repeat_loop:3:pick_object",
+      "repeat_loop:3:drop_object",
     ],
   }),
   new Level({

@@ -12,6 +12,7 @@ type CommandEditorProps = {
   onReset: () => void;
   onHint: () => void;
   hasHint: boolean;
+  defaultRepeatBody: BasicCommand;
 };
 
 const commands: CommandType[] = [
@@ -19,6 +20,7 @@ const commands: CommandType[] = [
   "turn_left",
   "turn_right",
   "pick_object",
+  "drop_object",
   "repeat_loop",
 ];
 
@@ -27,15 +29,19 @@ const repeatBodies: BasicCommand[] = [
   "turn_left",
   "turn_right",
   "pick_object",
+  "drop_object",
 ];
 
-const makeCommand = (type: CommandType): ProgramCommand => {
+const makeCommand = (
+  type: CommandType,
+  defaultRepeatBody: BasicCommand,
+): ProgramCommand => {
   if (type === "repeat_loop") {
     return {
       id: crypto.randomUUID(),
       type,
       times: 2,
-      body: "move_forward",
+      body: defaultRepeatBody,
     };
   }
 
@@ -50,9 +56,10 @@ export function CommandEditor({
   onReset,
   onHint,
   hasHint,
+  defaultRepeatBody,
 }: CommandEditorProps) {
   const addCommand = (type: CommandType) => {
-    onProgramChange([...program, makeCommand(type)]);
+    onProgramChange([...program, makeCommand(type, defaultRepeatBody)]);
   };
 
   const moveCommand = (index: number, offset: number) => {
