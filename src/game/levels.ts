@@ -207,7 +207,7 @@ export const levels = [
     id: 4,
     title: "Monkey and Crocodile",
     story:
-      "A monkey lives in a mango tree beside the river. A crocodile pretends to help, but some river stones are unsafe. Help the monkey collect two mangoes and return to the tree by planning a careful route around the crocodiles.",
+      "A monkey lives in a quiet tree beside the river. A crocodile pretends to help, but some river stones are unsafe. Help the monkey collect two mangoes along the path and return to the home tree by planning a careful route around the crocodiles.",
     concept: "Collecting items while avoiding tempting shortcuts",
     grid: new Grid(
       8,
@@ -242,7 +242,12 @@ export const levels = [
     start: { x: 0, y: 6 },
     direction: "east",
     characterSprite: "monkey",
-    goal: { type: "collectAll", itemKind: "mango", label: "Collect both mangoes" },
+    goal: {
+      type: "collectAllAt",
+      itemKind: "mango",
+      position: { x: 7, y: 0 },
+      label: "Collect mangoes and reach home",
+    },
     obstacles: [
       { id: "croc-river-a", kind: "crocodile", position: { x: 3, y: 6 }, sprite: "crocodile" },
       { id: "croc-river-b", kind: "crocodile", position: { x: 5, y: 3 }, sprite: "crocodile" },
@@ -254,8 +259,8 @@ export const levels = [
     ],
     objects: [
       { id: "river-mango-a", kind: "mango", position: { x: 4, y: 4 }, sprite: "mango" },
-      { id: "river-mango-b", kind: "mango", position: { x: 7, y: 0 }, sprite: "mango" },
-      { id: "river-tree", kind: "decoration", position: { x: 7, y: 0 }, sprite: "mangoTree" },
+      { id: "river-mango-b", kind: "mango", position: { x: 6, y: 2 }, sprite: "mango" },
+      { id: "home-tree", kind: "decoration", position: { x: 7, y: 0 }, sprite: "tree" },
     ],
     theme: "panchatantra",
     successText: "The monkey keeps calm, avoids the crocodiles, and brings the mangoes home.",
@@ -270,11 +275,11 @@ export const levels = [
       "repeat_loop:2:move_forward",
       "turn_right",
       "repeat_loop:2:move_forward",
+      "pick_object",
       "turn_left",
       "repeat_loop:2:move_forward",
       "turn_right",
       "move_forward",
-      "pick_object",
     ],
   }),
 ];

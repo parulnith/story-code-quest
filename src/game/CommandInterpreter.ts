@@ -195,9 +195,18 @@ export class CommandInterpreter {
 
     if (
       goal.type === "collectAll" &&
-      result.state.objects
-        .filter((object) => object.kind === goal.itemKind)
-        .every((object) => object.collected)
+      this.hasCollectedAll(result.state, goal.itemKind)
+    ) {
+      result.state.status = "success";
+      result.state.message = this.level.successText;
+      return { ...result, event: "success", message: this.level.successText };
+    }
+
+    if (
+      goal.type === "collectAllAt" &&
+      this.hasCollectedAll(result.state, goal.itemKind) &&
+      position.x === goal.position.x &&
+      position.y === goal.position.y
     ) {
       result.state.status = "success";
       result.state.message = this.level.successText;
@@ -207,6 +216,12 @@ export class CommandInterpreter {
     result.state.status = "running";
     result.state.message = result.message;
     return result;
+  }
+
+  private hasCollectedAll(state: RuntimeState, itemKind: "mango" | "stone") {
+    return state.objects
+      .filter((object) => object.kind === itemKind)
+      .every((object) => object.collected);
   }
 
   private cloneState(state: RuntimeState): RuntimeState {

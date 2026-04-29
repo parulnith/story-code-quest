@@ -78,6 +78,12 @@ export type LevelGoal =
       type: "collectAll";
       itemKind: "mango" | "stone";
       label: string;
+    }
+  | {
+      type: "collectAllAt";
+      itemKind: "mango" | "stone";
+      position: Position;
+      label: string;
     };
 
 export type LevelTheme = "red" | "crow" | "monkey" | "panchatantra";
