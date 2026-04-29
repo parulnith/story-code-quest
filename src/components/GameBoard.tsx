@@ -16,6 +16,7 @@ const spriteSources: Record<SpriteName, string> = {
   crow: "/assets/sprites/crow.png",
   monkey: "/assets/sprites/monkey.png",
   rabbit: "/assets/sprites/rabbit.png",
+  tortoise: "/assets/sprites/tortoise.png",
   lion: "/assets/sprites/lion.png",
   crocodile: "/assets/sprites/crocodile.png",
   grandmaHouse: "/assets/sprites/grandma-house.png",

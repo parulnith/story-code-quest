@@ -32,6 +32,7 @@ export type SpriteName =
   | "crow"
   | "monkey"
   | "rabbit"
+  | "tortoise"
   | "lion"
   | "crocodile"
   | "grandmaHouse"
@@ -75,7 +76,7 @@ export type LevelGoal =
     }
   | {
       type: "collectAll";
-      itemKind: "mango";
+      itemKind: "mango" | "stone";
       label: string;
     };
 
