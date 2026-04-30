@@ -6,6 +6,10 @@ Story Code Quest is a story-based programming puzzle game for children. Players 
 
 Play the live game: [story-code-quest.vercel.app](https://story-code-quest.vercel.app/)
 
+## Demo
+
+![Story Code Quest gameplay](https://raw.githubusercontent.com/parulnith/story-code-quest/main/public/assets/story_code.gif)
+
 ## What Kids Learn
 
 - Sequencing actions in the right order
